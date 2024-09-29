@@ -1,8 +1,56 @@
-﻿@{
+﻿@model pc_02.Models.Account
+
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Registro de Cuenta Bancaria</h2>
+    <form asp-action="CreateAccount" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="AccountOwner" class="form-label">Nombre del titular</label>
+            <input asp-for="AccountOwner" class="form-control" placeholder="Ingrese el nombre completo" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email del titular</label>
+            <input asp-for="Email" class="form-control" placeholder="Ingrese el correo electrónico" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AccountType" class="form-label">Tipo de cuenta</label>
+            <select asp-for="AccountType" class="form-select">
+                <option value="0">Cuenta de Ahorros (Saving)</option>
+                <option value="1">Money Market Account (MMA)</option>
+                <option value="2">Certificado de Depósito (CD)</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CurrentBlance" class="form-label">Saldo Actual</label>
+            <input asp-for="CurrentBlance" class="form-control" type="number" min="0"
+                placeholder="Ingrese el saldo inicial" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrar cuenta</button>
+
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-error mt-5">
+                @ViewData["SuccessMessage"]
+            </div>
+        }
+
+
+        @if (ViewData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success mt-5">
+                @ViewData["SuccessMessage"]
+            </div>
+        }
+    </form>
 </div>

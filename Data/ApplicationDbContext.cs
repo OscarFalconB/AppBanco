@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace PC2.Data;
+namespace pc_02.Data;
 
 public class ApplicationDbContext : IdentityDbContext
 {
@@ -9,4 +10,6 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
+
+    public DbSet<Models.Account> DataAccounts { get; set; }
 }

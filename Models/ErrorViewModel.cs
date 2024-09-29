@@ -1,4 +1,4 @@
-namespace PC2.Models;
+namespace pc_02.Models;
 
 public class ErrorViewModel
 {

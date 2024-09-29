@@ -1,0 +1,33 @@
+﻿@model IEnumerable<pc_02.Models.Account>
+
+@{
+    ViewData["Title"] = "View Accounts";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+
+<div class="container mt-5">
+    <h2 class="mb-4">Listado de Cuentas Bancarias</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre del titular</th>
+                <th>Email</th>
+                <th>Tipo de cuenta</th>
+                <th>Saldo actual</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var account in Model)
+            {
+                <tr>
+                    <td>@account.AccountOwner</td>
+                    <td>@account.Email</td>
+                    <td>@account.AccountType</td>
+                    <td>@account.CurrentBlance</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
